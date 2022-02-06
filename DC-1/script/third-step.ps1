@@ -1,7 +1,7 @@
 ﻿<#
     DESCRIPTION
             Developer: Kuba
-            License: Free for private use only
+            
             Creating sites, subnet, OU
             v.1
 #>
