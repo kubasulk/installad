@@ -166,7 +166,7 @@ New-ADOrganizationalUnit -Name "Groups" -path "ou=Tier 0,OU=administration,$name
 
 
 New-ADOrganizationalUnit -Name "Tier 1" -path "OU=administration,$namedc" -ProtectedFromAccidentalDeletion:$true
-New-ADOrganizationalUnit -Name "Severs" -path "ou=Tier 1,OU=administration,$namedc" -ProtectedFromAccidentalDeletion:$true
+New-ADOrganizationalUnit -Name "Servers" -path "ou=Tier 1,OU=administration,$namedc" -ProtectedFromAccidentalDeletion:$true
 New-ADOrganizationalUnit -Name "Accounts" -path "ou=Tier 1,OU=administration,$namedc" -ProtectedFromAccidentalDeletion:$true
 New-ADOrganizationalUnit -Name "Groups" -path "ou=Tier 1,OU=administration,$namedc" -ProtectedFromAccidentalDeletion:$true
 
