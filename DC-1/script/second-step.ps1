@@ -1,15 +1,19 @@
 ﻿<#
-    .NOTES
         Version: 1.0
-    .DESCRIPTION
-        Developer
             Developer: Kuba
-            License: Free for private use only
+         
             Changing name of computer, Removing autologon functions", Installing role AD
 #>
-function autologon {Write-Host ""Write-Host "3. Removing autologin function" -ForegroundColor GreenWrite-Host ""Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name AutoAdminLogon  -Value "0"Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name ForceAutoLogon  -Value "0"
+
+function autologon {
+Write-Host ""
+Write-Host "3. Removing autologin function" -ForegroundColor Green
+Write-Host ""
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name AutoAdminLogon  -Value "0"
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name ForceAutoLogon  -Value "0"
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name DefaultUserName  -Value "0"
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name DefaultPassword   -Value "0"Remove-itemproperty -path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Run" -name MyKey
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name DefaultPassword   -Value "0"
+Remove-itemproperty -path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Run" -name MyKey
 
 Write-Host "Removing autologon function"
         For ($c=0; $c -le 10; $c++) { 
@@ -28,7 +32,13 @@ Write-Host "Removing autologon function"
 
 
 function installad {
-Write-Host ""Write-Host ""Write-Host ""Write-Host ""Write-Host ""Write-Host "4. Instaling AD role" -ForegroundColor GreenWrite-Host ""
+Write-Host ""
+Write-Host ""
+Write-Host ""
+Write-Host ""
+Write-Host ""
+Write-Host "4. Instaling AD role" -ForegroundColor Green
+Write-Host ""
 
 Write-Host ""
 Write-Host "Instaling role AD.... wait"
@@ -190,7 +200,11 @@ Install-ADDSForest `
 
 
 function thirdstep{
-new-itemproperty -path HKLM:\Software\Microsoft\Windows\CurrentVersion\Run MyKey -propertytype String -value "Powershell C:\script\third-step.ps1" > $nullSet-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name DefaultUserName -Value "$DomainNetbiosName\Administrator"Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name DefaultPassword -Value 'Pa$$w0rd'Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name AutoAdminLogon  -Value "1"Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name ForceAutoLogon  -Value "1"
+new-itemproperty -path HKLM:\Software\Microsoft\Windows\CurrentVersion\Run MyKey -propertytype String -value "Powershell C:\script\third-step.ps1" > $null
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name DefaultUserName -Value "$DomainNetbiosName\Administrator"
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name DefaultPassword -Value 'Pa$$w0rd'
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name AutoAdminLogon  -Value "1"
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name ForceAutoLogon  -Value "1"
 }
 
 autologon
