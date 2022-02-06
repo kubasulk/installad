@@ -1,8 +1,8 @@
 ﻿<#
-        Version: 1.0
+            DESCRIPTION
             Developer: Kuba
-         
             Changing name of computer, Removing autologon functions", Installing role AD
+            v.1
 #>
 
 function autologon {
