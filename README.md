@@ -28,4 +28,5 @@ DC02<br>
 ![1-dc2](https://user-images.githubusercontent.com/99129741/152703481-46b9e45a-e1fa-479d-8375-a8d8b374a773.PNG)
 <br><br>
 2-second-step<br>
-![2-dc2](https://user-images.githubusercontent.com/99129741/152704140-0a8bb1f9-eefb-4c0a-8dd2-d0e2ddf53abc.PNG)
+
+![2-dc2](https://user-images.githubusercontent.com/99129741/152704930-4e2b06cb-3dd9-4ac9-af67-6708e5375801.PNG)
