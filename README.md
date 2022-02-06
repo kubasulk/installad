@@ -26,4 +26,5 @@ DC1
     
     2-first-step.ps1
     <br>
-    ![dc02-1](https://user-images.githubusercontent.com/99129741/152703338-19f0d415-b4d2-4458-a613-8ac282624b96.PNG)
+    ![dc02-1](https://user-images.githubusercontent.com/99129741/152703364-34ecbc28-8884-44b7-8b55-bf14097b78dd.PNG)
+![1-dc2](https://user-images.githubusercontent.com/99129741/152703481-46b9e45a-e1fa-479d-8375-a8d8b374a773.PNG)
