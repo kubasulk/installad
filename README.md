@@ -19,3 +19,6 @@ DC1
   second-step.ps1
   <br>
   ![2](https://user-images.githubusercontent.com/99129741/152688016-b51b8c94-a8fa-4fb9-9d85-c9c647356455.PNG)
+<br><br>
+    third-step.ps1
+    ![3](https://user-images.githubusercontent.com/99129741/152691212-efa76bb1-80b0-40a6-b448-6b7e194d7a3f.PNG)
