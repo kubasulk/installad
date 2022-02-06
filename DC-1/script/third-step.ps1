@@ -1,8 +1,7 @@
-﻿<#
-    DESCRIPTION
+<#
+            DESCRIPTION
             Developer: Kuba
-            
-            Creating sites, subnet, OU
+            Creating sites, Creating subnet, Creating OU, Creating UPN, Changing name of site
             v.1
 #>
 
