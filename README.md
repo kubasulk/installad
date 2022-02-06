@@ -24,6 +24,6 @@ DC1
     ![3](https://user-images.githubusercontent.com/99129741/152691212-efa76bb1-80b0-40a6-b448-6b7e194d7a3f.PNG)
 <br><br>
     
-    
+DC02<br>    
 2-first-step.ps1<br>    
 ![1-dc2](https://user-images.githubusercontent.com/99129741/152703481-46b9e45a-e1fa-479d-8375-a8d8b374a773.PNG)
