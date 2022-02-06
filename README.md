@@ -7,5 +7,5 @@ dc-2 is for the next DC in the existing forest<br>
 
 
 Requirements:<br>
-One and more clean install windows server with default password "Pa$$w0rd"
+One and more clean install windows server 2k16/2k19/2k22 with default password "Pa$$w0rd"
 
