@@ -1,7 +1,15 @@
-﻿<#    DESCRIPTION            Developer: Kuba            License: Free for private use only            v.1#>
+<#
+            DESCRIPTION
+            Developer: Kuba
+            
+            v.1
+#>
 
 function autoremove {
-Write-Host ""Write-Host "3. Removing autologon function" -ForegroundColor GreenWrite-Host ""
+Write-Host ""
+Write-Host "3. Removing autologon function" -ForegroundColor Green
+Write-Host ""
+
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name AutoAdminLogon  -Value "0"
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name ForceAutoLogon  -Value "0"
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name DefaultUserName  -Value "0"
@@ -10,7 +18,9 @@ remove-itemproperty -path HKLM:\Software\Microsoft\Windows\CurrentVersion\Run -n
 }
 
 function finddc1 {
- Write-Host ""Write-Host "6. Choosing a dc" -ForegroundColor GreenWrite-Host ""
+ Write-Host ""
+Write-Host "6. Choosing a dc" -ForegroundColor Green
+Write-Host ""
 $global:domanname=(Get-ADDomain).dnsroot
 $listdc1=(Get-ADDomainController -filter *)
 $global:listdc=(Get-ADDomainController -filter *).hostname
@@ -33,7 +43,9 @@ finddc1
 
 
 function site1 {
-Write-Host ""Write-Host "5. Choosing a site" -ForegroundColor GreenWrite-Host ""
+Write-Host ""
+Write-Host "5. Choosing a site" -ForegroundColor Green
+Write-Host ""
 $global:site=(Get-ADReplicationSite -Filter *).name
 $global:site
 
