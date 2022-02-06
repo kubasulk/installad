@@ -31,7 +31,7 @@ echo "$listdcglo"
 $global:selectdc=read-host "Select the name of the DC from whom you would like to replicate data 'enter host name with $global:domanname '"
 
 
-if ($lisdc -ccontains $selectdc)
+if ($listdc -notcontains $selectdc)
 {
 Write-Host "entered server  $selectdc is unreachable "
 write-host ""
@@ -52,7 +52,7 @@ $global:site
 $global:sitecheck=Read-Host "Select the name of the site into which you want to add new DC"
 Write-Host ""
 Write-Host ""
-            if ($site -cnotcontains $sitecheck)
+            if ($site -notcontains $sitecheck)
             {
                 Write-Host ""
                 Write-Host "Site $sitecheck does not exist" -ForegroundColor Red
