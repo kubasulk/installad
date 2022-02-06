@@ -65,14 +65,14 @@ Write-Host ""
 
 
 function installad {
-Write-Host "Instaling role AD.... wait"
+Write-Host "4. Instaling role AD.... wait" -ForegroundColor Green
 Install-WindowsFeature -name AD-Domain-Services -IncludeManagementTools -WarningAction SilentlyContinue > $null
 Write-Host "installing AD"
 
 Import-Module ADDSDeployment
 $global:domanname=(Get-ADDomain).dnsroot
 #$global:domanname.dnsroot
-Write-Host "-----Add a domain controller $global:domanname to domain------- only FULL DC"
+Write-Host "-----Add a domain controller to domain $global:domanname ------- only FULL DC"
 }
 
 
