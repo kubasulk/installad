@@ -27,7 +27,8 @@ third-step.ps1
 <br><br>    
 DC02<br>    
 2-first-step.ps1<br>    
-![1-dc2](https://user-images.githubusercontent.com/99129741/152703481-46b9e45a-e1fa-479d-8375-a8d8b374a773.PNG)
+
+![1](https://user-images.githubusercontent.com/99129741/156860187-1337729d-dbab-4b04-8b07-1acc7eb25278.PNG)
 <br><br>
 2-second-step<br>
 
