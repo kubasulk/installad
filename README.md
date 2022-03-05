@@ -17,7 +17,8 @@ first-step.ps1
 <br><br>
 second-step.ps1
 <br>
-![2](https://user-images.githubusercontent.com/99129741/152688016-b51b8c94-a8fa-4fb9-9d85-c9c647356455.PNG)
+![secound-step](https://user-images.githubusercontent.com/99129741/156857880-46bff241-4a8b-4d2e-be92-62ba7a9efdc9.PNG)
+
 <br><br>
 third-step.ps1
 <br>
