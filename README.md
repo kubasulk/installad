@@ -32,4 +32,7 @@ DC02<br>
 <br><br>
 2-second-step<br>
 
-![2-dc2](https://user-images.githubusercontent.com/99129741/152704930-4e2b06cb-3dd9-4ac9-af67-6708e5375801.PNG)
+
+![2](https://user-images.githubusercontent.com/99129741/156860390-37b09e0f-2931-40cf-b562-6a662d983841.PNG)
+  
+  <br><br>
