@@ -3,11 +3,14 @@ Automatic install active directory
 
 
 Requirements:
+<BR>
+<BR>
 One and more clean install windows server 2k16/2k19/2k22 with default password "Pa$$w0rd"
 <BR>
 Create folder of name "script" on C:\. Then:
 <BR>
 on dc-1 run in powershell  first-step.ps1
+ <BR>
 on dc-2 run in powershell 2-first-step.ps1
 
 dc-1 is for the first DC in the new forest
