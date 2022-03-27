@@ -1,5 +1,5 @@
 # Install Active Directory from Powershell
-Automatic install active directory
+Automating install and configuration  of Active Directory
 
 
 Requirements:
