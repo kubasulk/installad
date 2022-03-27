@@ -24,11 +24,11 @@ Remove-itemproperty -path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Run" 
 Write-Host "Removing autologon function"
         For ($c=0; $c -le 10; $c++) { 
 
-        Write-host "*" -foregroundcolor "yellow" -nonewline 
+                                    Write-host "*" -foregroundcolor "yellow" -nonewline 
 
-        Start-Sleep -s 1 
+                                    Start-Sleep -s 1 
 
-        } 
+                                    }
         Write-Host ""
         Write-Host ""
         Write-Host ""
@@ -39,11 +39,8 @@ Write-Host "Removing autologon function"
 
  function upn1{
  
-  $global:checkupn=Get-adforest | select UPNSuffixes -ExpandProperty UPNSuffixes
+$global:checkupn=Get-adforest | select UPNSuffixes -ExpandProperty UPNSuffixes
 $global:checkupn1=$null
-
-
-
 $global:upnname=Read-Host "enter name of upn" $c
 
 if ($global:upnname -like "*.*"){
@@ -57,8 +54,8 @@ if ($global:upnname -like "*.*"){
                 }
 
                 else {Write-Host "this upn exist"}
-                }
-            else{upn1}
+                                }
+                else{upn1}
 
 }
 
@@ -69,34 +66,33 @@ Write-Host ""
 Write-Host "13. Creating UPN" -ForegroundColor Green
 Write-Host ""
 
-do{
+                            do{
 
 
 
-$global:upncount= [int]
+                            $global:upncount= [int]
 
-$global:upncount=Read-Host "How many UPN-s would you like to create?"
-$global:upncount = $global:upncount -as [int]
+                            $global:upncount=Read-Host "How many UPN-s would you like to create?"
+                            $global:upncount = $global:upncount -as [int]
 
-if ($global:upncount -is [int]){
+                            if ($global:upncount -is [int]){
 
-        For ($c=1; $c -le $global:upncount; $c++) { 
+                                                               For ($c=1; $c -le $global:upncount; $c++) { 
 
-     do
-{
-upn1
+                                                                                                           do
+                                                                                                            {
+                                                                                                            upn1
+                                                                                                            }
+                                                                                                            until ([bool]$global:checkupn1 -contains $global:upnname)
+                                                                                                           }
 
+                                                            }
 
-        
-}
-until ([bool]$global:checkupn1 -contains $global:upnname)
-}
-
-         }
-
-else {Write-Host "Only int"}
-}until ($global:upncount -ge 0)
+                            else {Write-Host "Only int"}
+                                }until ($global:upncount -ge 0)
         } 
+
+
 
 
 function site{
@@ -179,58 +175,66 @@ Write-Host "Creating OU wait 5s"
 
         For ($c=0; $c -le 5; $c++) { 
 
-        Write-host "." -foregroundcolor "red" -nonewline 
+                                    Write-host "." -foregroundcolor "red" -nonewline 
 
-        Start-Sleep -s 1 
+                                    Start-Sleep -s 1 
 
-        } 
+                                    } 
 }
 
 
- function chsite {
- $checksite=(Get-ADReplicationSite -Filter *).name
+function chsite
+{
+$checksite=(Get-ADReplicationSite -Filter *).name
 
 
 
- Write-Host ""
+Write-Host ""
 Write-Host "11. Changing name of site Default-First-Site-Name" -ForegroundColor Green
 Write-Host ""
 $checksite1=(Get-ADReplicationSite -Filter *).name
 $renamesite=Read-Host "Would you like to change name of Default-First-Site-Name y/n"
-if ($renamesite -eq "y")
-{
-Write-Host ""
-Write-Host ""
-Write-Host ""
+    if ($renamesite -eq "y")
+    {
+    Write-Host ""
+    Write-Host ""
+    Write-Host ""
 
 
 
-$global:sitedefault=Get-ADObject -SearchBase (Get-ADRootDSE).ConfigurationNamingContext -filter "name -eq 'Default-First-Site-Name'" 
-        if (!$sitedefault){
-            write-host "name of site  "Default-First-Site-Name" doesn't exist"
+    $global:sitedefault=Get-ADObject -SearchBase (Get-ADRootDSE).ConfigurationNamingContext -filter "name -eq 'Default-First-Site-Name'" 
+        if (!$sitedefault)
+        {
+        write-host "name of site  "Default-First-Site-Name" doesn't exist"
              
 
-            }
-                    else
+        }
+            else
+            {
+                    do
                     {
-                     do {
                     $entername=read-host "enter new name of site Default-First-Site-Name"
                     
                     if ($checksite -notcontains $entername){
 
-                    $sitedefault | Rename-ADObject -NewName $entername
-                    write-host "Name was changed"
-                    $checksite1=Get-ADReplicationSite -Identity $entername
-                                                                 }
-                                                                 else {Write-Host "This name exist"}
-                                                                 } until ([bool]$checksite1.name -eq $true)
+                                                            $sitedefault | Rename-ADObject -NewName $entername
+                                                            write-host "Name was changed"
+                                                            $checksite1=Get-ADReplicationSite -Identity $entername
+                                                            }
+                                                            else {Write-Host "This name exist"}
+                    } until ([bool]$checksite1.name -eq $true)
 
-                    }}
+            }
+    }
 else{
 Write-Host "Name will be not change"
 }
 
 }
+
+
+
+
 
 
 function network{
@@ -303,23 +307,24 @@ else {Write-Host "Only int"}
 }
 
 
-function ending{
+function ending
+{
 Write-Host ""
 Write-Host "14. END" -ForegroundColor Green
 Write-Host ""
 Write-Host "END:) THX!"
         For ($c=0; $c -le 10; $c++) { 
 
-        Write-host "*" -foregroundcolor "red" -nonewline 
+                                    Write-host "*" -foregroundcolor "red" -nonewline 
 
-        Start-Sleep -s 1 
+                                    Start-Sleep -s 1 
 
-        } 
+                                    } 
         Write-Host ""
         Write-Host ""
         Write-Host ""
         Write-Host ""
-        }
+}
 
 
 
