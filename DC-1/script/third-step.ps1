@@ -307,24 +307,101 @@ else {Write-Host "Only int"}
 }
 
 
-function ending
-{
+function dnsset{
 Write-Host ""
-Write-Host "14. END" -ForegroundColor Green
+Write-Host "14. SETTING DNS" -ForegroundColor Green
+Write-Host ""
+$dnsmain=Get-ADForest
+Write-Host "
+Set-DnsServerScavenging -ScavengingState $true -RefreshInterval 0.01:00:00 -NoRefreshInterval 00.01:00:00
+Set-DnsServerZoneAging $dnsmain -Aging $true -RefreshInterval 0.01:00:00 -NoRefreshInterval 00.01:00:00
+"
+Set-DnsServerScavenging -ScavengingState $true -RefreshInterval 0.01:00:00 -NoRefreshInterval 00.01:00:00
+Set-DnsServerZoneAging $dnsmain -Aging $true -RefreshInterval 0.01:00:00 -NoRefreshInterval 00.01:00:00
+
+}
+
+
+
+function createingFineGrainedPasswordPolicies{
+$namedomain=Get-ADDomain
+$namedc=$namedomain.DistinguishedName
+
+
+Write-Host ""
+Write-Host "15. Creating Fine Grained Password Policies" -ForegroundColor Green
+Write-Host ""
+
+
+New-ADGroup -Name "a0-admin" -SamAccountName a0-admin -GroupCategory Security -GroupScope Global -DisplayName "a0-admin" -Path "OU=Groups,OU=Tier 0,OU=administration,$namedc"
+New-ADGroup -Name "a1-admin" -SamAccountName a1-admin -GroupCategory Security -GroupScope Global -DisplayName "a1-admin" -Path "OU=Groups,OU=Tier 1,OU=administration,$namedc"
+New-ADGroup -Name "a2-admin" -SamAccountName a2-admin -GroupCategory Security -GroupScope Global -DisplayName "a2-admin" -Path "OU=Groups,OU=Tier 2,OU=administration,$namedc"
+
+
+
+New-ADFineGrainedPasswordPolicy -name "a0.account" -Precedence 1  -MinPasswordLength "14"   -MaxPasswordAge "30.00:00:00"  -LockoutThreshold 5  -MinPasswordAge "1" -PasswordHistoryCount "24" -ProtectedFromAccidentalDeletion:$true -ComplexityEnabled:$true -LockoutDuration "00:10:00"  -LockoutObservationWindow "00:10:00" -ReversibleEncryptionEnabled:$false
+New-ADFineGrainedPasswordPolicy -name "a1.account" -Precedence 1  -MinPasswordLength "12"   -MaxPasswordAge "30.00:00:00"  -LockoutThreshold 5  -MinPasswordAge "1" -PasswordHistoryCount "24" -ProtectedFromAccidentalDeletion:$true -ComplexityEnabled:$true -LockoutDuration "00:10:00"  -LockoutObservationWindow "00:10:00" -ReversibleEncryptionEnabled:$false
+New-ADFineGrainedPasswordPolicy -name "a2.account" -Precedence 1  -MinPasswordLength "12"   -MaxPasswordAge "60.00:00:00"  -LockoutThreshold 5  -MinPasswordAge "1" -PasswordHistoryCount "24" -ProtectedFromAccidentalDeletion:$true -ComplexityEnabled:$true -LockoutDuration "00:15:00"  -LockoutObservationWindow "00:15:00" -ReversibleEncryptionEnabled:$false
+
+Add-ADFineGrainedPasswordPolicySubject -Identity "a2.account" -Subjects "a2-admin"
+Add-ADFineGrainedPasswordPolicySubject -Identity "a1.account" -Subjects "a1-admin"
+Add-ADFineGrainedPasswordPolicySubject -Identity "a0.account" -Subjects "a0-admin"
+        For ($c=0; $c -le 10; $c++) { 
+
+        Write-host "." -foregroundcolor "red" -nonewline 
+
+        Start-Sleep -s 1 
+
+        } 
+
+
+}
+
+
+
+function enablebin {
+$namedomain=Get-ADDomain
+$namedc=$namedomain.DistinguishedName
+
+Write-Host ""
+Write-Host "16. Enable AD Recycle Bin" -ForegroundColor Green
+Write-Host ""
+
+
+Enable-ADOptionalFeature 'Recycle Bin Feature' -Scope ForestOrConfigurationSet -Target $namedc
+        For ($c=0; $c -le 10; $c++) { 
+
+        Write-host "." -foregroundcolor "red" -nonewline 
+
+        Start-Sleep -s 1 
+
+        } 
+
+
+
+}
+
+
+
+
+
+function ending{
+Write-Host ""
+Write-Host "17. END" -ForegroundColor Green
 Write-Host ""
 Write-Host "END:) THX!"
         For ($c=0; $c -le 10; $c++) { 
 
-                                    Write-host "*" -foregroundcolor "red" -nonewline 
+        Write-host "*" -foregroundcolor "red" -nonewline 
 
-                                    Start-Sleep -s 1 
+        Start-Sleep -s 1 
 
-                                    } 
+        } 
         Write-Host ""
         Write-Host ""
         Write-Host ""
         Write-Host ""
-}
+        }
 
 
 
@@ -334,5 +411,7 @@ ou
 chsite
 network
 upn
-
+dnsset
+createingFineGrainedPasswordPolicies
+enablebin
 ending
