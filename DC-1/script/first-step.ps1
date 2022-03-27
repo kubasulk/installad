@@ -6,54 +6,44 @@
 #>
 
 #$ErrorActionPreference = ‘SilentlyContinue’
-function network {
-Write-Host "1. Setting IP Address" -ForegroundColor Green
-Write-Host ""
-$ipadd=""
-$mask=""
-$gw=""
-$dns=""
-$dns1=""
+function network{
+                        Write-Host "1. Setting IP Address" -ForegroundColor Green
+                        Write-Host ""
+                        $ipadd=""
+                        $mask=""
+                        $gw=""
+                        $dns=""
+                        $dns1=""
+                        $network=get-netadapter
 
 
+                                    if ($network.Status -eq "up"){
+                                       $ipadd=read-host "Enter IP Adress"
+                                       $mask=read-host "Enter Prefix Length"
+                                       $gw=read-host "Enter GW Adress"
+                                       $dns=read-host "Enter DNS Adress"
+                                       $dns1=read-host "Enter DNS 1 Adress"
+                                       $enterip=(New-NetIPAddress –IPAddress $ipadd -DefaultGateway $gw -PrefixLength $mask -InterfaceIndex (Get-NetAdapter).InterfaceIndex -ErrorAction SilentlyContinue)
 
-$network=get-netadapter
+                                                  if (!$enterip){
+                                                                   ""
+                                                                   ""
+                                                                   Write-Host "Check the provided address"  -ForegroundColor Red
+                                                                   break
+                                                                }
+                                        else{
+                                            $enterip> $null
+                                            Set-DNSClientServerAddress –InterfaceIndex (Get-NetAdapter).InterfaceIndex –ServerAddresses $dns,$dns1
+                                            Start-Sleep -s 5
+                                            ipconfig
+                                            Start-Sleep -s 5
+                                            }
+                                                                }
 
-
-if ($network.Status -eq "up")
-{
-$ipadd=read-host "Enter IP Adress"
-$mask=read-host "Enter Prefix Length"
-$gw=read-host "Enter GW Adress"
-
-
-$dns=read-host "Enter DNS Adress"
-$dns1=read-host "Enter DNS 1 Adress"
-
-$enterip=(New-NetIPAddress –IPAddress $ipadd -DefaultGateway $gw -PrefixLength $mask -InterfaceIndex (Get-NetAdapter).InterfaceIndex -ErrorAction SilentlyContinue)
-if (!$enterip)
-{
-""
-""
-Write-Host "Check the provided address"  -ForegroundColor Red
-break
-}
-else{
-$enterip> $null
-Set-DNSClientServerAddress –InterfaceIndex (Get-NetAdapter).InterfaceIndex –ServerAddresses $dns,$dns1
-Start-Sleep -s 5
-ipconfig
-Start-Sleep -s 5
-}
-}
-
-else {
-
-
-
-Write-Host "connect vm to any network" -ForegroundColor Red
-exit
-}
+                            else{
+                                    Write-Host "connect vm to any network" -ForegroundColor Red
+                                    exit
+                                }
 
 
 
@@ -85,13 +75,13 @@ Write-Host "The script automatically sign in the system after a restart. In hype
 Write-Host ""
         For ($c=0; $c -le 15; $c++) { 
 
-        Write-host "." -foregroundcolor "red" -nonewline 
-        Start-Sleep -s 1 
+                                        Write-host "." -foregroundcolor "red" -nonewline 
+                                        Start-Sleep -s 1 
 
-        } 
+                                    } 
         Rename-Computer -NewName $global:namecopm -Restart
         
-}
+                                       }
 
 network
 name
