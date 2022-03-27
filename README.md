@@ -1,14 +1,17 @@
 # Install Active Directory from Powershell
 Automatic install active directory
 
-You need to copy the all scripts to the C:\scripts. and then on dc-1 run in powershell the "first-step.ps1", on dc-2 run in powershell 2-first-step.ps1<br>
-<br>
-dc-1 is for the first DC in the new forest <br>
-dc-2 is for the next DC in the existing forest<br>
 
-
-Requirements:<br>
+Requirements:
 One and more clean install windows server 2k16/2k19/2k22 with default password "Pa$$w0rd"
+
+Create folder of name "script" on C:\. Then:
+on dc-1 run in powershell  first-step.ps1
+on dc-2 run in powershell 2-first-step.ps1
+
+dc-1 is for the first DC in the new forest
+dc-2 is for the next DC in the existing forest
+
 
 DC1
 <BR>
