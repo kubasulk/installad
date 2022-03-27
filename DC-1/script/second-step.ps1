@@ -152,28 +152,6 @@ conf}
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function show{
 Write-Host ""
 Write-Host "6. Show parameters" -ForegroundColor Green
