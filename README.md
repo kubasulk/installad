@@ -14,7 +14,7 @@ On dc-1 run in powershell  first-step.ps1
 <BR>
 On dc-2 run in powershell 2-first-step.ps1
 
-dc-1 is for the first DC in the new forest
+dc-1 is for the first DC in the new forest<BR>
 dc-2 is for the next DC in the existing forest
 
 
