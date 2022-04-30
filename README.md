@@ -8,7 +8,7 @@ Requirements:
 One and more clean install windows server 2k16/2k19/2k22 with default password "Pa$$w0rd"
 <BR>
 <BR>
-Create folder of name "script" on C:\. Psse script into folder then:
+Create folder of name "script" on C:\. Pase script into folder then:
 <BR>
 On dc-1 run in powershell  first-step.ps1
 <BR>
